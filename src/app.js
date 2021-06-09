@@ -6,7 +6,7 @@ const blakebookFeed = document.querySelector('.blakebook-feed');
 
 ui = new UI();
 let username;
-if(localStorage.username !== '' && localStorage.username === null){
+if(localStorage.username !== '' && localStorage.username !== null){
   username = localStorage.username;
   ui.login();
   feed = new Feed(username);
