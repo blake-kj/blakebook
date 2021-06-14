@@ -6,7 +6,7 @@ const blakebookFeed = document.querySelector('.blakebook-feed');
 
 ui = new UI();
 let username;
-if(localStorage.username !== '' && localStorage.username !== null){
+if(localStorage.username !== '' && localStorage.username !== undefined){
   username = localStorage.username;
   ui.login();
   feed = new Feed(username);
@@ -24,7 +24,6 @@ loginForm.addEventListener('submit', e => {
     usernameInput.value = '';
     ui.login();
   }
-
 });
 
 logoutBtn.addEventListener('click', () => {
