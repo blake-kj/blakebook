@@ -15,8 +15,6 @@ if(localStorage.username !== '' && localStorage.username !== null){
   ui.logout();
 }
 
-
-
 loginForm.addEventListener('submit', e => {
   e.preventDefault();
   if(usernameInput.value !== ''){
@@ -43,12 +41,23 @@ newPostInput.addEventListener('keypress', e => {
 });
 
 blakebookFeed.addEventListener('click', e => {
-  console.log(`this is e:`);
-  console.log(e);
   if(e.target.classList.contains('fa-times')) {
-    db.collection('posts').doc(e.target.id).delete();  
+    ui.removePost(e.target.id); 
+  } else if (e.target.classList.contains('fa-pencil-alt')) {
+    ui.showEditPost(e);
+  } else if (e.target.classList.contains('fa-chevron-right')) {
+    ui.hideEditPost(e);
   }
 });
+
+blakebookFeed.addEventListener('keypress', e => {
+  if(e.key === 'Enter'){
+    db.collection('posts').doc(e.target.parentElement.parentElement.id).update({
+      message: e.target.value
+    });
+    ui.removeEditPost(e);
+  }
+})
 
 
 

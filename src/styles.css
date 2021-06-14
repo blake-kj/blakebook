@@ -60,3 +60,18 @@ nav li.logout:hover {
   cursor: pointer;
   color: #ff0000;
 }
+.fa-pencil-alt,
+.fa-chevron-right {
+  float: right;
+}
+.fa-pencil-alt:hover,
+.fa-chevron-right:hover {
+  cursor: pointer;
+}
+.hide {
+  display: none;
+}
+li a {
+  text-decoration: none;
+  color: #3b5998;
+}

@@ -21,6 +21,8 @@ class Feed {
     .orderBy('created_at')
     .onSnapshot(snapshot => {
       snapshot.docChanges().forEach(change => {
+        console.log('for each snapshot fired');
+        console.log(change);
         let id;
         if (change._delegate.doc._key.path.segments[1] !== 'blake-crud-app') {
           id = change._delegate.doc._key.path.segments[1];
@@ -30,7 +32,9 @@ class Feed {
         if(change.type === 'added') {
           ui.render(change.doc.data(), id);
         } else if (change.type === 'removed') {
-          document.getElementById(id).parentElement.parentElement.parentElement.remove();
+          document.getElementById(id).remove();
+        } else if (change.type === 'modified') {
+          ui.updatePost(change.doc.data(), id);
         }
       })
     })
