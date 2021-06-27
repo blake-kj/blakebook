@@ -21,8 +21,6 @@ class Feed {
     .orderBy('created_at')
     .onSnapshot(snapshot => {
       snapshot.docChanges().forEach(change => {
-        console.log('for each snapshot fired');
-        console.log(change);
         let id;
         if (change._delegate.doc._key.path.segments[1] !== 'blake-crud-app') {
           id = change._delegate.doc._key.path.segments[1];

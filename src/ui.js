@@ -56,7 +56,7 @@ class UI {
     editCard.querySelector('.update-post').remove();
   }
   updatePost(data, id){
-    const updateCard = document.querySelector(`#${id}`);
+    const updateCard = document.getElementById(id);
     updateCard.querySelector('.card-text').innerText = data.message;
   }
 }
